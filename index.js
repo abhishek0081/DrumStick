@@ -57,13 +57,16 @@ function makeSound(key) {
 for(let i= 0;i<document.querySelectorAll('.drum').length;i++){
     document.querySelectorAll('.drum')[i].addEventListener('click',function(){
         var buttonInnerHTML =  this.innerHTML;
-        makeSound(buttonInnerHTML)
+        makeSound(buttonInnerHTML);
+        buttionAnimation(buttonInnerHTML);
+
         
     });
 }
 //   Keyboard press
 document.addEventListener('keydown',function(event){
     makeSound(event.key);
+    buttionAnimation(event.key);
 });
 
 // function HouseKeeper (name,age,hasworkingPermit,languages,experience){
@@ -80,3 +83,15 @@ document.addEventListener('keydown',function(event){
 
 // let housekeeper1 = new HouseKeeper('Marie',21,'No',['English','Chinese','French','Russian'],5);
 // console.log(housekeeper1.cleaning)
+
+
+function buttionAnimation(currentKey){
+    var activeButton = document.querySelector("."+currentKey);
+    activeButton.classList.add('pressed')
+    
+    setTimeout(function(){
+        activeButton.classList.remove('pressed')
+    },200)
+
+}
+
